@@ -8,7 +8,6 @@ public class Fast {
 
 	
 	public static void main(String[] args) throws FileNotFoundException{
-	
 		// set the window
 		StdDraw.setXscale(0, 32768);
 		StdDraw.setYscale(0, 32768);
@@ -73,19 +72,14 @@ public class Fast {
 	
 	private static void doFast(Point[] ptArr, Point ptArrCopy[], double[] sArr) {
 		assert(ptArr.length == sArr.length);
-		
 		for (int i = 0; i < ptArrCopy.length; i++) {
-			
 			// for each point in the ptArr, select as pivot point
 			Point pvt =ptArrCopy[i];
-						
 			// generate the slope array with pvt as the pivot, sort the ptArr accordingly
 			Arrays.sort(ptArr, pvt.SLOPE_ORDER);
 			for (int j = 0; j < sArr.length; j++) {
 				sArr[j] = pvt.slopeTo(ptArr[j]);
 			}
-			
-				
 			// iterate through the sArr array, found the consecutive entries with same slope (other than -infinity)
 			// get the start and end index
 			int start = 0; 
@@ -96,10 +90,8 @@ public class Fast {
 			for (int k = 1; k < sArr.length; k++) {
 				if (sArr[k] > Double.NEGATIVE_INFINITY) {
 					
-					
 					if (sArr[k - 1] == sArr[k]) {
 						lastRun = thisRun++;
-						
 						if (thisRun >= 3 && k == sArr.length - 1) {
 							start = k - thisRun + 1;
 							end = k;
@@ -113,9 +105,7 @@ public class Fast {
 					} else {
 						lastRun = thisRun;
 						thisRun = 1;
-						
 						if (lastRun >= 3) {
-							
 							// get the region, update start and end, 
 							start = k - lastRun;
 							end = k - 1;
@@ -130,7 +120,6 @@ public class Fast {
 			}		
 		}
 	}
-	
 	
 	
 	private static void drawLinesNPrint(Point[] ptArr, Point pvt, int start, int end) {
