@@ -79,7 +79,6 @@ public class Point implements Comparable<Point> {
 
     private class SlopeComparator implements Comparator<Point> {
     	public int compare(Point a, Point b) {
-    		
     		// return (int) (Point.this.slopeTo(a) - Point.this.slopeTo(b));
     		if (a == null || b == null) { throw new NullPointerException(); }
     		double sa = Point.this.slopeTo(a);
