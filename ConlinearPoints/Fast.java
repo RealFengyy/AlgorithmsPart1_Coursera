@@ -3,17 +3,12 @@ import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-
 public class Fast {
-
-	
 	public static void main(String[] args) throws FileNotFoundException{
 		// set the window
 		StdDraw.setXscale(0, 32768);
 		StdDraw.setYscale(0, 32768);
-	
 		if (null != args) {
-	
 			Scanner in = new Scanner(new File(args[0]));
 			int N = in.nextInt();
 			Point pointArr[] = new Point[N];
@@ -28,13 +23,10 @@ public class Fast {
 			}
 			assert (i == N);
 			in.close();
-
 			double pvSlopeArr[] = new double[pointArr.length];	
 			doDrawPoints(pointArr);
 			doFast(pointArr, pointArrCopy, pvSlopeArr);
-	
 		}
-		
 	}
 	
 	
@@ -54,7 +46,6 @@ public class Fast {
 			int end = 0;
 			int thisRun = 1;
 			int lastRun = 1;
-			
 			for (int k = 1; k < sArr.length; k++) {
 				if (sArr[k] > Double.NEGATIVE_INFINITY) {
 					
@@ -90,7 +81,6 @@ public class Fast {
 	
 	
 	private static void drawLinesNPrint(Point[] ptArr, Point pvt, int start, int end) {
-		
 		String out = pvt + " -> ";		
 		for(int i = start; i < end; i++) {
 			
@@ -103,10 +93,7 @@ public class Fast {
 	
 	
 	private static void doDrawPoints(Point[] ptArr) {
-		
-		for (Point pt : ptArr) {
-			pt.draw();
-		}
+		for (Point pt : ptArr)  pt.draw();
 	}
 	
 }	
