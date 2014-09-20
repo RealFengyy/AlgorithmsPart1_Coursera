@@ -83,7 +83,6 @@ public class Fast {
 	private static void drawLinesNPrint(Point[] ptArr, Point pvt, int start, int end) {
 		String out = pvt + " -> ";		
 		for(int i = start; i < end; i++) {
-			
 			out = out + ptArr[i] + " -> ";
 		}
 		out = out + ptArr[end];
