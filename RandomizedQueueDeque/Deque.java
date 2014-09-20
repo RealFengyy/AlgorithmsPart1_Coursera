@@ -1,7 +1,6 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
 public class Deque<Item> implements Iterable<Item> {
 	
 	// inner class Node
@@ -10,7 +9,7 @@ public class Deque<Item> implements Iterable<Item> {
 		private Node prev;
 		private Node next;
 	}
-	
+
 	
 	public Deque() {          
 		// construct an empty deque
@@ -18,6 +17,7 @@ public class Deque<Item> implements Iterable<Item> {
 		last = null;	
 		len = 0;
 	}
+   
    
 	public boolean isEmpty() {                 
    		// is the deque empty?
@@ -95,6 +95,7 @@ public class Deque<Item> implements Iterable<Item> {
 	    return retItem;
 	}
    
+   
 	public Item removeLast() {                
 		// delete and return the item at the end
 		if (len == 0) {
@@ -119,14 +120,16 @@ public class Deque<Item> implements Iterable<Item> {
 	   return new DequeIterator();
    	}
    
+   
    	private class DequeIterator implements Iterator<Item> {
-   		
    		private Node current = first;
+   		
+   		
    		public boolean hasNext() {
-   			
    			// the current is the item to be returned
    			return current != null;
    		}
+   	
    		
    		public Item next() {
    			if (hasNext() == false) {
@@ -143,10 +146,10 @@ public class Deque<Item> implements Iterable<Item> {
    		}
    	}
    
+   
    	public static void main(String[] args) {
 	   // unit testing
    		Deque<Integer> intDeque = new Deque<Integer>();
-   		
    		// test empty
    		//StdOut.println(intDeque.removeFirst());
    		
@@ -154,14 +157,16 @@ public class Deque<Item> implements Iterable<Item> {
    			intDeque.addFirst(i);
    			intDeque.addLast(i - 20);
    		}
-   		
    		for (int readInt : intDeque) {
    			StdOut.println(readInt);
    		}
    	}
    	
+   	
    	// instance variables 
    	private Node first;
    	private Node last;
    	private int len;
+
+	
 }
