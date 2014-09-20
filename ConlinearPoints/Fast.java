@@ -38,38 +38,6 @@ public class Fast {
 	}
 	
 	
-	
-	/*
-	public static void main(String[] args) {
-		 StdDraw.setXscale(0, 32768);
-		 StdDraw.setYscale(0, 32768);
-		 
-		 int N = StdIn.readInt();
-		 Point pointArr[] = new Point[N];
-			Point pointArrCopy[] = new Point[N];
-			int i = 0;
-			while (StdIn.hasNextLine() && StdIn.hasNextChar()) {
-				int x = StdIn.readInt();
-				int y = StdIn.readInt();
-				pointArr[i] = new Point(x, y);
-				pointArrCopy[i] = new Point(x, y);
-				i++;
-			}
-			double pvSlopeArr[] = new double[pointArr.length];	
-			doDrawPoints(pointArr);
-			doFast(pointArr, pointArrCopy, pvSlopeArr);
-		 
-	}
-	*/
-	
-	
-	
-	
-
-
-	
-	
-	
 	private static void doFast(Point[] ptArr, Point ptArrCopy[], double[] sArr) {
 		assert(ptArr.length == sArr.length);
 		for (int i = 0; i < ptArrCopy.length; i++) {
