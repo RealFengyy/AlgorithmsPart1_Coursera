@@ -5,7 +5,6 @@
 
 public class Percolation {
 
-	
 	// instance variables
 	private int size; // size of the sites, plus 2 virtual sites
 	private int gridLen; // length of the square
@@ -39,33 +38,26 @@ public class Percolation {
 			throw new IllegalArgumentException();
 		}
 		gridLen = N;
-		
 		size = N * N + 2;
-		
 		//StdOut.println(size);
 		unionTable = new WeightedQuickUnionUF(size);
 		unionTableBW = new WeightedQuickUnionUF(size - 1);
 		openTable = new boolean[gridLen + 1][gridLen + 1];
-		                 
-		
 	
-			
-		
-			for(int i = 0; i < gridLen; i++) {
-				
-				unionTable.union(i, size - 2); // virtual site at the top
-				unionTableBW.union(i, size - 2);
-				unionTable.union(size - 3 - i, size - 1); // virtual site at the botton
-				//statTable[i] = true;
-				//unionTable.union()
-			}
-		
+		for(int i = 0; i < gridLen; i++) {
+			unionTable.union(i, size - 2); // virtual site at the top
+			unionTableBW.union(i, size - 2);
+			unionTable.union(size - 3 - i, size - 1); // virtual site at the botton
+			//statTable[i] = true;
+			//unionTable.union()
+		}
 		for(int i = 0; i < gridLen + 1; i++) {
 			for(int j = 0; j < gridLen + 1; j++) {
 				openTable[i][j] = false;
 			}
 		}
 	}
+	
 	
 	/*
 	 * open a site indicated by the coordinate
@@ -74,11 +66,9 @@ public class Percolation {
 		// open site (row i, column j) if it is not already
 		isValidIndex(i, j);
 		int ind = matrix2Ind(i, j);
-		
 		if(!isOpen(i,j)) {
 			openTable[i][j] = true;
 		}
-		
 		if(gridLen == 1) {
 			return;
 		}
@@ -109,21 +99,17 @@ public class Percolation {
 				}
 			}
 		}
-			
-		
    }
 	
-	/*
-	 * judge whether a site is open
-	 */
+   /*
+    * judge whether a site is open
+    */
    public boolean isOpen(int i, int j) {
 	   // is site (row i, column j) open?
 	   isValidIndex(i, j);
-	   
 	   return openTable[i][j];
-
-	   
    }
+   
    
    /*
     * judge whether a site is connected to the virtual top site
@@ -134,7 +120,6 @@ public class Percolation {
 	   int oneDInd = matrix2Ind(i, j);
 	   //boolean stat = openTable[i][j];
 	   return isOpen(i,j) && unionTableBW.connected(oneDInd, size - 2);
-	   
    }
    
    /*
@@ -149,9 +134,8 @@ public class Percolation {
 		   else 
 			   return false;
 	   }
-	   else 
-		   return isOpen(1,1);
-	   //return false;
+	   else  return isOpen(1,1);
    }
+
    
 }
