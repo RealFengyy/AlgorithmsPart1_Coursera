@@ -167,13 +167,13 @@ public class KdTree {
 			                                parentNode.p.x(),
 			                                parentNode.rect.ymax());
 	   if (true == onX && false == goLeft) return new RectHV(parentNode.p.x(),
-			   								parentNode.rect.ymin(),
-			   								parentNode.rect.xmax(),
-			   								parentNode.rect.ymax());
+			   				parentNode.rect.ymin(),
+			   				parentNode.rect.xmax(),
+			   				parentNode.rect.ymax());
 	   if (false == onX && true == goLeft) return new RectHV(parentNode.rect.xmin(),
-			   								parentNode.rect.ymin(),
-			   								parentNode.rect.xmax(),
-			   								parentNode.p.y());
+			   				parentNode.rect.ymin(),
+			   				parentNode.rect.xmax(),
+			   				parentNode.p.y());
 	   
 	   // false == onX && false == goLeft
 	   return new RectHV(parentNode.rect.xmin(),
