@@ -2,10 +2,7 @@
 
 public class Board {
 	
-	
 	private char[][] curBoard;
-	// private int totalMove;
-	
 	private int gHammingDist;
 	private int gManhattanDist;
 	
@@ -47,6 +44,7 @@ public class Board {
     	return curBoard.length;
     }
     
+    
     public int hamming() {
     	// number of blocks out of place
     	if (null == curBoard) throw new NullPointerException();
@@ -70,14 +68,14 @@ public class Board {
     	// sum of Manhattan distances between blocks and goal
     	if (null == curBoard) throw new NullPointerException();
     	int tempVal = 0;
-  
     	if (-1 == gManhattanDist) {
 	    	int manhattanDist = 0;
 	    	for (int i = 0; i < curBoard.length; i++) {
 	    		for (int j = 0; j < curBoard.length; j++) {
 	    			if (0 != curBoard[i][j]) {
 	    				tempVal = curBoard[i][j] - 1;
-	    				manhattanDist += Math.abs(tempVal / curBoard.length - i) + Math.abs(tempVal % curBoard.length - j);
+	    				manhattanDist += Math.abs(tempVal / curBoard.length - i) + \
+	    				Math.abs(tempVal % curBoard.length - j);
 	    			}
 	    			
 	    		}
@@ -87,10 +85,14 @@ public class Board {
    	
     	return gManhattanDist;
     }
+    
+    
     public boolean isGoal() {
     	// is this board the goal board?
     	return 0 == hamming() && 0 == manhattan();
     }
+    
+    
     public Board twin() {
     	// a board obtained by exchanging two adjacent blocks in the same row
     	if (null == curBoard) throw new NullPointerException();
@@ -123,7 +125,6 @@ public class Board {
     	if (null == y) return false;
     	if (this.getClass() != y.getClass()) return false;
     	Board yy = (Board)y;
-    	
     	if (yy.curBoard.length != yy.curBoard.length || yy.curBoard.length != curBoard.length) return false;
     	for (int i = 0; i < yy.curBoard.length; i++) {
     		for (int j = 0; j < yy.curBoard.length; j++) {
@@ -153,10 +154,7 @@ public class Board {
     			}
     		}
     	}
-    	
-    	
-    	
-    	Board upperMove = null;
+     	Board upperMove = null;
     	// move from upper loc available
     	if (0 != iZero) {
     		int[][] upperBlocks = copyBlocks(curBoard);
@@ -165,7 +163,6 @@ public class Board {
     		upperMove = new Board(upperBlocks);
 
     	}
-    	
     	Board lowerMove = null;
     	// move from lower loc available
     	if (curBoard.length - 1 != iZero) {
@@ -184,7 +181,6 @@ public class Board {
     		leftMove = new Board(leftBlocks);
     		
     	}
-    	
     	Board rightMove = null;
     	// move from right loc available
     	if (curBoard.length - 1 != jZero) {
@@ -193,16 +189,12 @@ public class Board {
     		rightBlocks[iZero][jZero + 1] = 0;
     		rightMove = new Board(rightBlocks);
     	}
-   
-    	
     	if (null != upperMove) neighborQ.enqueue(upperMove);
     	if (null != lowerMove) neighborQ.enqueue(lowerMove);
     	if (null != leftMove) neighborQ.enqueue(leftMove);
     	if (null != rightMove) neighborQ.enqueue(rightMove);
     	return neighborQ;
     }
-    
-    
     
     
     public String toString() {
