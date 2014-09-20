@@ -95,7 +95,6 @@ public class Fast {
 						if (thisRun >= 3 && k == sArr.length - 1) {
 							start = k - thisRun + 1;
 							end = k;
-						    // StdOut.println("start: " + start + ", end: " + end + ", slope: " + sArr[start]);
 							Arrays.sort(ptArr, start, end + 1);
 							if (pvt.compareTo(ptArr[start]) < 0) {
 								drawLinesNPrint(ptArr, pvt, start, end);
